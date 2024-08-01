@@ -1,0 +1,195 @@
+.background1{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background: url('/assets/background.jpg');
+    opacity: .07;
+    z-index: 0;
+}
+
+.hero{
+    display: flex;
+    height: 40vh;
+    margin-top: 60px;
+    background-image: linear-gradient(to right, #a30000, #b61816, #fd3d3a, #f13d3a, #eb5b5b);
+    box-shadow: inset 0 5px 10px rgba(0, 0, 0, .5), inset 0 -5px 10px rgba(0, 0, 0, .5);
+}
+
+.hero-message{
+    flex: 3;
+    text-align: start;
+    padding: 60px 20px;
+}
+
+.hero-message h1{
+    font-size: 40px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.hero-message h4{
+    font-size: 24px;
+    color: white;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+.hero-message p{
+    font-size: 18px;
+    color: white;
+}
+
+.hero-image-container{
+    margin-top: 30px;
+    flex: 2;
+    height: 80%;
+    width: auto;
+}
+
+.hero-image-container img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.options{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    z-index: 1;
+}
+
+.options-container{
+    width: 100%;
+    height: auto;
+    padding: 50px;
+}
+
+.card-row{
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.card-container{
+    border-radius: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    width: 33%;
+    margin-top: 50px;
+    margin-right: 30px;
+    margin-left: 30px;
+    background: rgba( 255, 255, 255, 0.1 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    color: #A30000;
+    border-radius: 10px;
+    border: 1px solid white;
+    box-shadow: 2px 2px 32px 0 #ffa5a571;
+    padding: 50px;
+}
+
+.card-container h2{
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.card-container ul{
+    font-size: 16px;
+    text-align: start;
+    list-style: disc;
+}
+
+.schedule-btn{
+    position: absolute;
+    bottom: -15px;
+    background-color: white;
+    padding: 10px 15px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .5);
+    font-size: 18px;
+    cursor: pointer;
+    color: #A30000;
+    font-weight: 600;
+    border: 1px solid #A30000;
+    border-radius: 20px;
+    transition: all .3s;
+}
+
+.schedule-btn:hover{
+    border: 1px solid white;
+    background-color: #A30000;
+    color: white;
+    bottom: -10px;
+}
+
+.groom-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    border-radius: 50%;
+    top: -30px;
+    left: -30px;
+    width: 65px;
+    background-color: white;
+    border: 2px solid #A30000;
+    overflow: hidden;
+    height: 65px; 
+}
+
+.groom-icons{
+    width: 70%;
+    height: auto;
+    object-fit: cover;
+}
+
+.info-text{
+    height: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.info-text h1{
+    font-size: 30px;
+    padding-bottom: 10px;
+}
+
+.info-text h4{
+    font-size: 18px;
+    font-weight: 500;
+    padding-bottom: 5px;
+}
+
+@media (max-width: 992px){
+    .options{
+        height: auto;
+    }
+
+    .card-row{
+        height: auto;
+        flex-direction: column;
+    }
+
+    .card-container{
+        margin-bottom: 50px;
+        width: 80%;
+    }
+
+    .schedule-btn:hover{
+        margin-bottom: -12px;
+    }
+}

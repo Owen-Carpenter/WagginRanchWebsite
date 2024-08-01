@@ -1,0 +1,164 @@
+.header{
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    align-items: center;
+    border-bottom: 1px solid #A30000;
+    z-index: 10;
+}
+
+.header::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: -1;
+}
+
+.logo{
+    height: 60px;
+    left: 5%;
+    cursor: pointer;
+}
+
+.navbar{
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+    align-items: center;
+}
+
+.navbar a{
+    text-decoration: none;
+    font-size: 16px;
+    padding: 0 25px;
+    color: #A30000;
+    font-weight: 500;
+    transition: all .3s;
+}
+
+.navbar a:not(.search){
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.navbar a:not(.overlook, .search){
+    border-right: 2px solid #A30000;
+}
+
+.navbar a:hover:not(.search){
+    box-shadow: 0 1px 0 #A30000;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+#check{
+    display: none;
+}
+
+.icons{
+    position: absolute;
+    font-size: 2.8rem;
+    color: #A30000;
+    cursor: pointer;
+    display: none;
+    right: 5%;
+}
+
+.search{
+    display: flex;
+    align-items: center;
+}
+
+.search-bar{
+    height: 30px;
+    border: 1px solid #A30000;
+    outline: none;
+    border-radius: 2px;
+    min-width: 0;
+}
+
+.search-bar::placeholder{
+    padding-left: 5px;
+    font-style: italic;
+    color: #A30000;
+}
+
+.search-box{
+    height: 30px;
+    margin-left: -1px;
+    border: none;
+    background-color: #A30000;
+    padding: 0 7px;
+    cursor: pointer;
+}
+
+.search-icon{
+    filter: invert(100%);
+    margin-top: 2px;
+    height: 16px;
+}
+
+@media (max-width: 768px){
+    .icons{
+        display: inline-flex;
+    }
+
+    #check:checked~.icons #menu-icon{
+        display: none;
+    }
+
+    .icons #close-icon{
+        display: none;
+    }
+
+    #check:checked~.icons #close-icon{
+        display: block;
+    }
+
+    .navbar{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background-color: white;
+        display: block;
+        border-bottom: 1px solid #A30000;
+        overflow: hidden;
+        transition: .3s ease;
+    }
+
+    #check:checked~.navbar{
+        height: 275px;
+    }
+
+    .navbar a{
+        font-size: 1.1rem;
+        display: block;
+        margin: 1.2rem 0;
+        text-align: center;
+        border-right: none !important;
+        transform: translateY(-10px);
+        transition: .3s ease;
+    }
+
+    #check:checked~.navbar a{
+        transform: translateY(0);
+    }
+
+    .navbar a:hover{
+        box-shadow: none !important;
+        background-color: transparent !important;
+    }
+
+    .search{
+        justify-content: center;
+        display: flex !important;
+    }
+}

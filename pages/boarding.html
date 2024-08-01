@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/boarding.css">
+    <link rel="stylesheet" href="/styles/navbar.css">
+    <link rel="stylesheet" href="/styles/general.css">
+    <link rel="stylesheet" href="/styles/footer.css">
+    <link rel="icon" href="/assets/WRLogo.png">
+    <link rel="stylesheet" href="/styles/popup.css">
+    <script defer src="/scripts/services.js"></script>
+    <title>Navbar Waggin Ranch</title>
+</head>
+<body>
+    <section class="header">
+        <div class="logo-section">
+            <a href="/pages/home.html"><img class="logo" src="/assets/WRLogo.png" alt=""></a>
+        </div>
+        <input type="checkbox" id="check">
+        <label for="check" class="icons">
+            <i class='bx bx-menu' id="menu-icon"></i>
+            <i class='bx bx-x'id="close-icon"></i>
+        </label>
+        <nav class="navbar">
+            <a href="/pages/home.html">Home</a>
+            <a href="/pages/products.html">Products</a>
+            <a href="/pages/services.html">Services</a>
+            <a href="/pages/about.html">About</a>
+            <a class="overlook" href="/pages/contact.html">Contact</a>
+        </nav>
+    </section>
+    <section class="hero">
+        <div class="hero-message">
+            <h1>Dog Boarding</h1>
+            <h4>Where comfort meets care for your canine companion!</h4>
+            <p>Scroll to see our various grooming packages</p>
+        </div>
+        <div class="hero-image-container">
+            <img src="/assets/boarding-hero.webp" alt="">
+        </div>
+    </section>
+    <section class="options">
+        <div class="background1"></div>
+        <div class="options-container">
+            <div class="card-row">
+                <div class="card-container" data-tilt>
+                    <div class="groom-icon">
+                        <img class="groom-icons" src="/assets/icons/overnight.png" alt="">
+                    </div>
+                    <h2>Overnight</h2>
+                    <h4>Price starting at $40</h4>
+                    <h4>Amenities include:</h4>
+                    <ul>
+                        <li>One dog</li>
+                        <li>Spacious 5x5 kennels</li>
+                        <li>Bring your pups favorite food</li>
+                        <li>We follow all feeding routines</li>
+                        <li>We follow all medication routines</li>
+                        <li>Food for dogs a night is $2 if needed</li>
+                    </ul>
+                    <button type="schedule" onclick="openPopup()" class="schedule-btn">
+                        Schedule Now
+                    </button>
+                </div>
+                <div class="card-container" data-tilt>
+                    <div class="groom-icon">
+                        <img class="groom-icons" src="/assets/icons/5-nights.png" alt="">
+                    </div>
+                    <h2>5 Nights or More</h2>
+                    <h4>Price starting at $37 per night</h4>
+                    <h4>Amenities include:</h4>
+                    <ul>
+                        <li>One dog</li>
+                        <li>Spacious 5x5 kennels</li>
+                        <li>Bring your pups favorite food</li>
+                        <li>We follow all feeding routines</li>
+                        <li>We follow all medication routines</li>
+                        <li>Food for dogs a night is $2 if needed</li>
+                    </ul>
+                    <button type="schedule" onclick="openPopup()" class="schedule-btn">
+                        Schedule Now
+                    </button>
+                </div>
+            </div>
+            <div class="card-row">
+                <div class="card-container" data-tilt>
+                    <div class="groom-icon">
+                        <img class="groom-icons" src="/assets/icons/overnight-more.png" alt="">
+                    </div>
+                    <h2>Overnight +1</h2>
+                    <h4>Price starting at $36</h4>
+                    <h4>Amenities include:</h4>
+                    <ul>
+                        <li>Two or more dogs</li>
+                        <li>Spacious 5x5 kennels</li>
+                        <li>Bring your pups favorite food</li>
+                        <li>We follow all feeding routines</li>
+                        <li>We follow all medication routines</li>
+                        <li>Food for dogs a night is $2 if needed</li>
+                    </ul>
+                    <button type="schedule" onclick="openPopup()" class="schedule-btn">
+                        Schedule Now
+                    </button>
+                </div>
+                <div class="card-container" data-tilt>
+                    <div class="groom-icon">
+                        <img class="groom-icons" src="/assets/icons/5-nights.png" alt="">
+                    </div>
+                    <h2>5 Nights or More+</h2>
+                    <h4>Price starting at $36 per night</h4>
+                    <h4>Amenities include:</h4>
+                    <ul>
+                        <li>Two or more dogs</li>
+                        <li>Spacious 5x5 kennels</li>
+                        <li>Bring your pups favorite food</li>
+                        <li>We follow all feeding routines</li>
+                        <li>We follow all medication routines</li>
+                        <li>Food for dogs a night is $2 if needed</li>
+                    </ul>
+                    <button type="schedule" onclick="openPopup()" class="schedule-btn">
+                        Schedule Now
+                    </button>
+                </div>
+            </div>
+            <div class="info-text">
+                <h1>Important Information:</h1>
+                <h4>Drop-off times: 6am-11am (Sunday: 3pm-5pm)</h4>
+                <h4>Pick up time: 5:30pm</h4>
+                <h4>Vaccine Requirements: up to date Bordetella & Rabies.</h4>
+                <h4>All areas are sanitized multiples times a day.</h4>
+            </div>
+        </div>
+    </section>
+    <section class="popup">
+        <div class="popup-container" id="popupContainer">
+            <h1>Select an Option:</h1>
+            <button class="close" onclick="closePopup()">
+                <i class='bx bx-x'></i>
+            </button> 
+            <div class="popup-option-container">
+                <p id="plan1">Overnight</p>
+                <button class="submit" type="submit" onclick="openCalendar(1)">
+                    Submit
+                </button>
+            </div>
+            <div class="popup-option-container">
+                <p id="plan2">Overnight +1</p>
+                <button class="submit" type="submit" onclick="openCalendar(2)">
+                    Submit
+                </button>
+            </div>
+            <div class="popup-option-container">
+                <p id="plan3">5 Nights or More</p>
+                <button class="submit" type="submit" onclick="openCalendar(3)">
+                    Submit
+                </button>
+            </div>
+            <div class="popup-option-container">
+                <p id="plan4">5 Nights or More+</p>
+                <button class="submit" type="submit" onclick="openCalendar(4)">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </section>
+    <section class="popup-date">
+        <div class="popup-date-container" id="popupDateContainer">
+            <button class="close" onclick="closePopup()">
+                <i class='bx bx-x'></i>
+            </button>
+            <h1>Choose Date: </h1>
+            <header class="calendar-header">
+                <p class="calendar-current-date"></p>
+                <div class="calendar-navigation">
+                    <button class="calendar-btn" id="calendar-prev" onclick="prevDate()">
+                        &lt;
+                    </button>
+                    <button class="calendar-btn" id="calendar-next" onclick="nextDate()">
+                        &gt;
+                    </button>
+                </div>
+            </header>
+            <div class="calendar-body">
+                <ul class="calendar-weekdays">
+                    <li>Sun</li>
+                    <li>Mon</li>
+                    <li>Tue</li>
+                    <li>Wed</li>
+                    <li>Thu</li>
+                    <li>Fri</li>
+                    <li>Sat</li>
+                </ul>
+                <div class="calendar-date-row">
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                </div>
+                <div class="calendar-date-row">
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                </div>
+                <div class="calendar-date-row">
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                </div>
+                <div class="calendar-date-row">
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                </div>
+                <div class="calendar-date-row">
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                </div>
+                <div class="calendar-date-row">
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                    <p class="calendar-day" onclick="openContact()"></p>
+                </div>
+            </div>
+            <div class="popup-btn">
+                <button class="prev-popup-btn" onclick="previousPlanPopup()">
+                    Previous
+                </button>
+            </div>
+        </div>
+    </section>
+    <section class="popup-contact">
+        <div class="popup-contact-container" id="popupContactContainer">
+            <button class="close" onclick="closePopup()">
+                <i class='bx bx-x'></i>
+            </button>
+            <h1>Contact Information: </h1>
+            <div class="form-container">
+                <input class="searchText" type="text" placeholder="First Name">
+                <input class="searchText" type="text" placeholder="Last Name">
+                <input class="searchText" type="text" placeholder="E-Mail Address">
+                <input class="searchText" type="text" placeholder="Phone Number">
+                <input class="searchText" class="comments" type="text" placeholder="Comments">
+            </div>
+            <div class="btn-container">
+                <div class="popup-btn">
+                    <button class="prev-popup-btn" onclick="previousPlanCalendar()">
+                        Previous
+                    </button>
+                </div>
+                <button class="finish-btn" onclick="submitResponse()">
+                    Finish
+                </button>
+            </div>
+            
+        </div>
+    </section>
+    <section class="popup-thanks">
+        <div class="popup-thanks-container" id="popupThanksContainer">
+            <button class="close" onclick="closePopup()">
+                <i class='bx bx-x'></i>
+            </button>
+            <h1>Thank You!</h1>
+            <h4>A confirmation letter has been sent to your email. Check your inbox.</h4>
+            <p class="plan-submit"></p>
+            <p class="date-submit"></p>
+            <p class="name-submit"></p>
+        </div>
+    </section>
+    <section class="footer">
+        <div class="logo-container">
+            <img src="/assets/WRLogo.png" alt="">
+        </div>
+        <div class="menu-container">
+            <h1>Menu</h1>
+            <p><a href="/pages/home.html">Home</a></p>
+            <p><a href="/pages/products.html">Products</a></p>
+            <p><a href="/pages/services.html">Services</a></p>
+            <p><a href="/pages/about.html">About</a></p>
+            <p><a href="/pages/contact.html">Contact</a></p>
+        </div>
+        <div class="contact-container">
+            <h1>Contact Us</h1>
+            <div class="contact-line">
+                <i class='bx bx-phone'></i>
+                <p>(501)-932-6242</p>
+            </div>
+            <div class="contact-line">
+                <i class='bx bx-envelope' ></i>
+                <p>thewagginranch@gmail.com</p>
+            </div>
+            <div class="contact-line">
+                <i class='bx bx-map-pin' ></i>
+                <p>574 HWY 64E Conway, AR 72032</p>
+            </div>
+            <div class="contact-line">
+                <i class='bx bxl-facebook' ></i>
+                <p>wagginranch</p>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript" src="/scripts/vanilla-tilt.min.js"></script>
+</body>
+</html>
