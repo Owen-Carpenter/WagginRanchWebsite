@@ -466,7 +466,7 @@ ABOUT SECTION
         width: 100%;
         height: auto;
     }
-    .review-card:nth-child(1){
+    .review-card:nth-child(2){
         display: block;
     }
 }
