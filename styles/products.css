@@ -349,6 +349,10 @@
         background-image: linear-gradient(to bottoms, #a30000, #b61816, #fd3d3a, #f16866, #ffa5a5);
     }
 
+    .brands-content h3{
+        display: none;
+    }
+
     .brands-content{
         height: auto;
         padding: 50px;
