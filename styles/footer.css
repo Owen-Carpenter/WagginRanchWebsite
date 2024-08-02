@@ -1,63 +1,70 @@
 .footer{
-    height: 20vh;
-    background-color: rgb(160, 159, 159);
+    height: 30vh;
+    background-color: #f2f2f2;
+    border-top: 1px solid #3d3d3d;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-content{
     display: flex;
     justify-content: space-around;
-}
-
-.logo-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80%;
-    width: auto;
-}
-
-.logo-container img{
-    height: 100%;
-    width: auto;
-}
-
-.contact-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: start;
+    padding-top: 30px;
     color: #A30000;
-    text-align: center;
 }
 
-.contact-line{
-    display: flex;
-    justify-content: space-between;
-}
-
-.contact-line i{
-    padding-right: 5px;
-}
-
-.menu-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #A30000;
-    padding: 0 10px;
-    transition: all .15s;
-}
-
-.menu-container a{
+.footer-content a{
     text-decoration: none;
     color: #A30000;
 }
 
-.menu-container a:hover{
+.footer-content a:hover{
     text-decoration: underline;
 }
 
-@media (max-width: 786px){
-    .contact-container i{
-        display: none;
-    }
+.hours ul, .resources ul, .company ul{
+    list-style-type: none;
+    line-height: 1.5;
 }
 
+.indent{
+    padding-left: 10px;
+}
+
+.logo-footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    width: auto;
+}
+
+.logo-footer img{
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+@media (max-width: 992px){
+    .footer{
+        height: auto;
+        flex-wrap: wrap;
+    }
+    .footer-content{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .logo-footer{
+        order: 4;
+    }
+    .resources {
+        width: 100%; /* Make resources take full width on small screens */
+        text-align: center; /* Center align text */
+        padding-top: 10px;
+    }
+    .hours, .company{
+        padding: 10px;
+    }
+}
