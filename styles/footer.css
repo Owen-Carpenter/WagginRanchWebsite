@@ -60,8 +60,8 @@
         order: 4;
     }
     .resources {
-        width: 100%; /* Make resources take full width on small screens */
-        text-align: center; /* Center align text */
+        width: 100%;
+        text-align: center;
         padding-top: 10px;
     }
     .hours, .company{

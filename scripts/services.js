@@ -252,5 +252,3 @@ function submitResponse(){
         thanksPopupContainer.classList.add('show');
     }
 }
-
-
