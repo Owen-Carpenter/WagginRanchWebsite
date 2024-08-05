@@ -68,6 +68,8 @@ function createCalendar(month, year) {
             row.style.display = "flex";
         }
     });
+
+    return selectedDate;
 }
 
 function openCalendar(i) {
@@ -87,6 +89,8 @@ function openCalendar(i) {
 
     var popupContainer = document.getElementById('popupContainer');
     popupContainer.classList.remove('show');
+
+    return selectedPlan;
 }
 
 function addonsSubmit() {
@@ -115,6 +119,8 @@ function addonSelection(i) {
 
     var addonSubmission = document.querySelector('.addon-submit');
     addonSubmission.textContent = ("Add-Ons: " + selectedArr.join(', '));
+
+    return selectedArr;
 }
 
 createCalendar(currentMonth, currentYear);
@@ -250,5 +256,7 @@ function submitResponse(){
 
         var thanksPopupContainer = document.getElementById('popupThanksContainer');
         thanksPopupContainer.classList.add('show');
+
+        return contactArr;
     }
 }

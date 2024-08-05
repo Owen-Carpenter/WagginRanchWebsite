@@ -4,6 +4,8 @@ const {google} = require("googleapis");
 
 const app = express();
 
+import { contactArr, selectedPlan, selectedDate, selectedArr} from './scripts/services';
+
 app.get("/", async (req, res) => {
     const auth = new google.auth.GoogleAuth({
         keyFile: "credentials.json",
@@ -36,10 +38,10 @@ app.get("/", async (req, res) => {
     await googleSheets.spreadsheets.values.append({
         auth,
         spreadsheetId,
-        range: "Sheet1!A:F",
+        range: "Sheet1!A:G",
         valueInputOption: "USER_ENTERED",
         resource: {
-            values: [[ "Make a tutorial", "test"]],
+            values: [[ contactArr[0] + " " + contactArr[1], contactArr[2], contactArr[3], selectedPlan, selectedDate, selectedArr, contactArr[4]]],
         }
     })
 
