@@ -9,4 +9,6 @@ This application allows website users to view the Waggin' Ranch online store. Cu
 ![JavaScript](https://raw.githubusercontent.com/github/explore/main/topics/javascript/javascript.png)
 ![HTML](https://raw.githubusercontent.com/github/explore/main/topics/html/html.png)
 ![CSS](https://raw.githubusercontent.com/github/explore/main/topics/css/css.png)
-
+![Express.js](https://raw.githubusercontent.com/github/explore/main/topics/express/express.png)
+![npm](https://raw.githubusercontent.com/github/explore/main/topics/npm/npm.png)
+![Node.js](https://raw.githubusercontent.com/github/explore/main/topics/nodejs/nodejs.png)
