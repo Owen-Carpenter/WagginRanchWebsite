@@ -5,7 +5,6 @@ const {google} = require("googleapis");
 const app = express();
 
 app.get("/", async (req, res) => {
-
     const auth = new google.auth.GoogleAuth({
         keyFile: "credentials.json",
         scopes: "https://www.googleapis.com/auth/spreadsheets"
@@ -19,6 +18,20 @@ app.get("/", async (req, res) => {
 
     const spreadsheetId = "1lQLKlnnaVXn3vWEALZpynWwHQEf-IzsWK_rUVHGVaQ0";
 
+    //Get metadata via spreadsheets
+    const metaData = await googleSheets.spreadsheets.get({
+        auth, 
+        spreadsheetId,
+
+    })
+
+    //Read rows from spreadsheet
+    const getRows = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "Sheet1"
+    });
+
     //Write rows to spreadsheet
     await googleSheets.spreadsheets.values.append({
         auth,
@@ -26,9 +39,11 @@ app.get("/", async (req, res) => {
         range: "Sheet1!A:F",
         valueInputOption: "USER_ENTERED",
         resource: {
-            values: [[]],
+            values: [[ "Make a tutorial", "test"]],
         }
     })
+
+    res.send(getRows.data);
 })
 
 app.listen(1337, (req, res) => console.log("running on port 1337"));
