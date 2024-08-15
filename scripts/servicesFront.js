@@ -1,4 +1,5 @@
 const calendarDateRow = document.querySelector(".calendar-date-row");
+
 let date = new Date();
 let currentYear = date.getFullYear();
 let currentMonth = date.getMonth();
@@ -8,6 +9,9 @@ let day = currentDay;
 let year = currentYear;
 let month = currentMonth;
 
+let selectedDate = null;
+let formalDate = null;
+let selectedPlan = null;
 let contactArr = [];
 
 function getDaysInMonth(month, year){
@@ -55,9 +59,13 @@ function createCalendar(month, year) {
             } else {
                 dayElement.style.border = "1px solid #A30000";
                 dayElement.addEventListener('click', () => {
-                    var selectedDate = dayElement.textContent;
+                    selectedDate = dayElement.textContent;
                     var dateSubmission = document.querySelector('.date-submit');
-                    dateSubmission.textContent = ("Date Scheduled: " + (month+1) + "/" + selectedDate + "/" + year);
+
+                    formalDate = (month+1) + "/" + selectedDate + "/" + year;
+                    
+                    dateSubmission.textContent = ("Date Scheduled: " + formalDate);
+
                 });
             }
         });
@@ -69,12 +77,12 @@ function createCalendar(month, year) {
         }
     });
 
-    return selectedDate;
+    return formalDate.toString();
 }
 
 function openCalendar(i) {
     var plan = document.getElementById('plan' + i);
-    var selectedPlan = plan.textContent;
+    selectedPlan = plan.textContent;
 
     var planSubmission = document.querySelector('.plan-submit');
     planSubmission.textContent = ("Selected Plan: " + selectedPlan);
@@ -257,6 +265,28 @@ function submitResponse(){
         var thanksPopupContainer = document.getElementById('popupThanksContainer');
         thanksPopupContainer.classList.add('show');
 
+        sendDataToServer();
+
         return contactArr;
     }
 }
+
+async function sendDataToServer() {
+    const response = await fetch('http://localhost:1337/data', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            selectedPlan,
+            contactArr,
+            formalDate,
+            selectedArr
+        })
+    });
+
+    const data = await response.json();
+    console.log(data); // Handle the response from the server
+}
+
+sendDataToServer();
