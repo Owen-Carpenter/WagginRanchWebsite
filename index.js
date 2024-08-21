@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 app.post("/data", async (req, res) => {
-    const { selectedPlan, contactArr, formalDate, selectedArr } = req.body;
+    const { selectedPlan, contactArr, formalDate, selectedArr, servicePage } = req.body;
 
     console.log(req.body);
 
@@ -29,66 +29,75 @@ app.post("/data", async (req, res) => {
 
     // Write rows to spreadsheet
     
-    await googleSheets.spreadsheets.values.append({
-        auth,
-        spreadsheetId,
-        range: "GroomingScheduling!A:G",
-        valueInputOption: "USER_ENTERED",
-        resource: {
-            values: [
-                [
-                    `${contactArr[0]} ${contactArr[1]}`,
-                    contactArr[2],
-                    contactArr[3],
-                    selectedPlan,
-                    formalDate,
-                    selectedArr.join(', '),
-                    contactArr[4]
-                ]
-            ]
-        }
-    });
+    const services = [
+        "daycare",
+        "grooming",
+        "boarding"
+    ];
 
-    await googleSheets.spreadsheets.values.append({
-        auth,
-        spreadsheetId,
-        range: "DaycareScheduling!A:G",
-        valueInputOption: "USER_ENTERED",
-        resource: {
-            values: [
-                [
-                    `${contactArr[0]} ${contactArr[1]}`,
-                    contactArr[2],
-                    contactArr[3],
-                    selectedPlan,
-                    formalDate,
-                    selectedArr.join(', '),
-                    contactArr[4]
+    if(servicePage == services[0]){
+        await googleSheets.spreadsheets.values.append({
+            auth,
+            spreadsheetId,
+            range: "DaycareScheduling!A:G",
+            valueInputOption: "USER_ENTERED",
+            resource: {
+                values: [
+                    [
+                        `${contactArr[0]} ${contactArr[1]}`,
+                        contactArr[2],
+                        contactArr[3],
+                        selectedPlan,
+                        formalDate,
+                        selectedArr.join(', '),
+                        contactArr[4]
+                    ]
                 ]
-            ]
-        }
-    })
-
-    await googleSheets.spreadsheets.values.append({
-        auth,
-        spreadsheetId,
-        range: "BoardingScheduling!A:G",
-        valueInputOption: "USER_ENTERED",
-        resource: {
-            values: [
-                [
-                    `${contactArr[0]} ${contactArr[1]}`,
-                    contactArr[2],
-                    contactArr[3],
-                    selectedPlan,
-                    formalDate,
-                    selectedArr.join(', '),
-                    contactArr[4]   
+            }
+        });
+    }else if(servicePage == services[1]){
+        await googleSheets.spreadsheets.values.append({
+            auth,
+            spreadsheetId,
+            range: "GroomingScheduling!A:G",
+            valueInputOption: "USER_ENTERED",
+            resource: {
+                values: [
+                    [
+                        `${contactArr[0]} ${contactArr[1]}`,
+                        contactArr[2],
+                        contactArr[3],
+                        selectedPlan,
+                        formalDate,
+                        selectedArr.join(', '),
+                        contactArr[4]
+                    ]
                 ]
-            ]
-        }
-    })
-
+            }
+        });
+    }else if(servicePage == services[2]){
+        await googleSheets.spreadsheets.values.append({
+            auth,
+            spreadsheetId,
+            range: "BoardingScheduling!A:G",
+            valueInputOption: "USER_ENTERED",
+            resource: {
+                values: [
+                    [
+                        `${contactArr[0]} ${contactArr[1]}`,
+                        contactArr[2],
+                        contactArr[3],
+                        selectedPlan,
+                        formalDate,
+                        selectedArr.join(', '),
+                        contactArr[4]   
+                    ]
+                ]
+            }
+        });
+    }else{
+        console.log("Error getting the service type");
+    }
     res.json({ message: "Data saved successfully!" });
 });
 

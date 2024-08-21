@@ -13,6 +13,7 @@ let selectedDate = null;
 let formalDate = null;
 let selectedPlan = null;
 let contactArr = [];
+let servicePage = null;
 
 function getDaysInMonth(month, year){
     return new Date(year, month + 1, 0).getDate();
@@ -21,6 +22,29 @@ function getDaysInMonth(month, year){
 function getStartDay(month, year){
     return new Date(year, month, 1).getDay();
 }
+
+const service = [
+    "daycare",
+    "grooming",
+    "boarding"
+]
+
+function getServiceType() {
+    var serviceType = window.location.pathname.split('/');
+    if(serviceType[2] == "daycare.html"){
+        servicePage = "daycare";
+    } else if(serviceType[2] == "grooming.html"){
+        servicePage = "grooming";
+    } else if(serviceType[2] == "boarding.html"){
+        servicePage = "boarding";
+    } else{
+        console.log("Error getting the service type!");
+    }
+    console.log(servicePage);    
+    return servicePage
+}
+
+servicePage = getServiceType();
 
 function createCalendar(month, year) {
     const daysInMonth = getDaysInMonth(month, year);
@@ -271,22 +295,6 @@ function submitResponse(){
     }
 }
 
-const service = [
-    "daycare",
-    "grooming",
-    "boarding"
-]
-
-function getServiceType() {
-    const serviceType = window.location.pathname;
-    console.log(serviceType);
-    return serviceType;
-}
-
-const serviceType = getServiceType();
-
-getServiceType();
-
 async function sendDataToServer() {
     try {
         const response = await fetch('http://localhost:1337/data', {
@@ -298,7 +306,8 @@ async function sendDataToServer() {
                 selectedPlan,
                 contactArr,
                 formalDate,
-                selectedArr
+                selectedArr,
+                servicePage
             })
         });
 
