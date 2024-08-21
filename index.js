@@ -9,10 +9,6 @@ app.use(express.json());
 
 app.use(cors());
 
-app.get("/", (req, res) => {
-    res.send("Welcome to the Express server!");
-});
-
 app.post("/data", async (req, res) => {
     const { selectedPlan, contactArr, formalDate, selectedArr } = req.body;
 
@@ -32,10 +28,11 @@ app.post("/data", async (req, res) => {
     const spreadsheetId = "1lQLKlnnaVXn3vWEALZpynWwHQEf-IzsWK_rUVHGVaQ0";
 
     // Write rows to spreadsheet
+    
     await googleSheets.spreadsheets.values.append({
         auth,
         spreadsheetId,
-        range: "Sheet1!A:G",
+        range: "GroomingScheduling!A:G",
         valueInputOption: "USER_ENTERED",
         resource: {
             values: [
@@ -51,6 +48,46 @@ app.post("/data", async (req, res) => {
             ]
         }
     });
+
+    await googleSheets.spreadsheets.values.append({
+        auth,
+        spreadsheetId,
+        range: "DaycareScheduling!A:G",
+        valueInputOption: "USER_ENTERED",
+        resource: {
+            values: [
+                [
+                    `${contactArr[0]} ${contactArr[1]}`,
+                    contactArr[2],
+                    contactArr[3],
+                    selectedPlan,
+                    formalDate,
+                    selectedArr.join(', '),
+                    contactArr[4]
+                ]
+            ]
+        }
+    })
+
+    await googleSheets.spreadsheets.values.append({
+        auth,
+        spreadsheetId,
+        range: "BoardingScheduling!A:G",
+        valueInputOption: "USER_ENTERED",
+        resource: {
+            values: [
+                [
+                    `${contactArr[0]} ${contactArr[1]}`,
+                    contactArr[2],
+                    contactArr[3],
+                    selectedPlan,
+                    formalDate,
+                    selectedArr.join(', '),
+                    contactArr[4]   
+                ]
+            ]
+        }
+    })
 
     res.json({ message: "Data saved successfully!" });
 });

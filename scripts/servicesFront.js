@@ -131,8 +131,6 @@ function addonSelection(i) {
     return selectedArr;
 }
 
-createCalendar(currentMonth, currentYear);
-
 const months = [
     "January",
     "Febuary",
@@ -151,7 +149,9 @@ const months = [
 let currentMonthYear = months[month] + " " + year;
 
 let calendarCurrentDate = document.querySelector(".calendar-current-date");
-calendarCurrentDate.textContent = currentMonthYear
+calendarCurrentDate.textContent = currentMonthYear;
+
+createCalendar(currentMonth, currentYear);
 
 function prevDate(){
     if (month === currentMonth && year === currentYear) {
@@ -271,22 +271,51 @@ function submitResponse(){
     }
 }
 
-async function sendDataToServer() {
-    const response = await fetch('http://localhost:1337/data', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            selectedPlan,
-            contactArr,
-            formalDate,
-            selectedArr
-        })
-    });
+const service = [
+    "daycare",
+    "grooming",
+    "boarding"
+]
 
-    const data = await response.json();
-    console.log(data); // Handle the response from the server
+function getServiceType() {
+    const serviceType = window.location.pathname;
+    console.log(serviceType);
+    return serviceType;
 }
+
+const serviceType = getServiceType();
+
+getServiceType();
+
+async function sendDataToServer() {
+    try {
+        const response = await fetch('http://localhost:1337/data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                selectedPlan,
+                contactArr,
+                formalDate,
+                selectedArr
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log(data); // Handle the response from the server
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+console.log('Selected Plan:', selectedPlan);
+console.log('Contact Array:', contactArr);
+console.log('Formal Date:', formalDate);
+console.log('Selected Add-ons:', selectedArr);
 
 sendDataToServer();
